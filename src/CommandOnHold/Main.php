@@ -10,7 +10,6 @@ use pocketmine\permission\Permission;
 use pocketmine\permission\Permissible;
 use pockemine\command\CommandExecutor;
 use pocketmine\Server;
-use pocketmine\event\player
 use pocketmine\player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
@@ -22,7 +21,6 @@ class Main extends PlayerEvent implements Cancellable{
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
     $player = $event->getPlayer();
     $item = $player->getInventory()->getItemInHand();
-    $cmd = ;
     $execute =  $this->getServer()->dispatchCommand($player, '$cmd');
   }
   
