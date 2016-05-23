@@ -8,7 +8,7 @@ use pocketmine\event\Listener;
 use pocketmine\command;
 use pocketmine\permission\Permission;
 use pocketmine\permission\Permissible;
-use pockemine\command\CommandExecutor
+use pockemine\command\CommandExecutor;
 use pocketmine\Server;
 use pocketmine\event\player
 use pocketmine\player;
@@ -22,6 +22,8 @@ class Main extends PlayerEvent implements Cancellable{
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
     $player = $event->getPlayer();
     $item = $player->getInventory()->getItemInHand();
+    $cmd = ;
+    $execute =  $this->getServer()->dispatchCommand($player, '$cmd');
   }
   
   public function onDisable(){
@@ -31,4 +33,4 @@ class Main extends PlayerEvent implements Cancellable{
   //Start
     if($item->getId() == 347){
       $player->sendPopup("You're holding a Clock!");
-      $player->sendMessage("Your name is " . $player->getName() . "!"")
+      $player->sendMessage("Your name is " . $player->getName() . "!"");
