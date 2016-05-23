@@ -19,6 +19,9 @@ class Main extends PlayerEvent implements Cancellable{
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
+  }
+  
+  public function onRun($tick)(){
     $player = $event->getPlayer();
     $item = $player->getInventory()->getItemInHand();
     $cmd = $player->sendMessage("Your name is " . $player->getName() . "!");
