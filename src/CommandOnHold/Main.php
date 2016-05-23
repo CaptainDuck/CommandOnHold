@@ -33,4 +33,4 @@ class Main extends PlayerEvent implements Cancellable{
   //Start
     if($item->getId() == 347){
       $player->sendPopup("You're holding a Clock!");
-      $player->sendMessage("Your name is " . $player->getName() . "!"");
+      $player->sendMessage("Your name is " . $player->getName() . "!");
