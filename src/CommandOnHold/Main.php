@@ -25,7 +25,7 @@ class Main extends PlayerEvent implements Cancellable{
     $player = $event->getPlayer();
     $item = $player->getInventory()->getItemInHand();
     $playername = " . $player->getName() . ";
-    $execute =  $this->getServer()->dispatchCommand($player, '$cmd');
+    $execute =  $this->getServer()->dispatchCommand($player, 'help');
     switch ($item->getId()){
       case 264:
         $player->sendMessage("You're holding a Diamond!");
