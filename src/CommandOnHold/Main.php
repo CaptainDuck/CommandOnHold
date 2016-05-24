@@ -24,13 +24,16 @@ class Main extends PlayerEvent implements Cancellable{
   public function onPlayerItemHeldEvent(){
     $player = $event->getPlayer();
     $item = $player->getInventory()->getItemInHand();
-    $cmd = Your name is " . $playername() . "!";
     $playername = " . $player->getName() . ";
     $execute =  $this->getServer()->dispatchCommand($player, '$cmd');
     switch ($item->getId()){
       case 264:
         $player->sendMessage("You're holding a Diamond!");
-        $player->sendMessage("$cmd");
+        $player->sendMessage("$playername");
+        break;
+      case 351:
+          $player->sendMessage("You're holding a dye!");
+          $player->sendMessage("$playername")
   
   public function onDisable(){
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck disabled! :o");
