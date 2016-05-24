@@ -34,6 +34,8 @@ class Main extends PlayerEvent implements Cancellable{
       case 351:
           $player->sendMessage("You're holding a dye!");
           $player->sendMessage("$playername")
+          break;
+    }
   
   public function onDisable(){
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck disabled! :o");
