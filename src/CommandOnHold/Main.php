@@ -14,7 +14,7 @@ use pocketmine\player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
-class Main extends PlayerEvent implements Cancellable{
+class Main extends PluginBase implements Listener{
   
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -30,10 +30,12 @@ class Main extends PlayerEvent implements Cancellable{
         
         #Execute Command -> $this->getServer()->dispatchCommand($player, 'help');
         
-        switch($item->getId()){
-            case 265:
-                $player->sendMessage("You're holding a diamond!");
-                $player-> $this->getServer()->dispatchCommand($player, 'help');
+        if($item->getId() == 265){
+            $player->sendMessage("You're holding a diamond!");
+            $player-> $this->getServer()->dispatchCommand($player, 'help');
+        }
+        if($item->getId() == 32){
+            $player->sendMessage("You're hold a deadbush! :o");
         }
   }
 }
