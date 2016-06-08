@@ -1,6 +1,6 @@
 <?php
 
-namespace CaptainDuck\CommandOnHold;
+namespace CommandOnHold;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\Item;
@@ -20,23 +20,20 @@ class Main extends PlayerEvent implements Cancellable{
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
   }
-  
-  public function onPlayerItemHeldEvent(){
-    $player = $event->getPlayer();
-    $item = $player->getInventory()->getItemInHand();
-    $playername = " . $player->getName() . ";
-    $execute =  $this->getServer()->dispatchCommand($player, 'help');
-    switch ($item->getId()){
-      case 264:
-        $player->sendMessage("You're holding a Diamond!");
-        $player->sendMessage("$playername");
-        break;
-      case 351:
-          $player->sendMessage("You're holding a dye!");
-          $player->sendMessage("$playername")
-          break;
-    }
-  
   public function onDisable(){
-    $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck disabled! :o");
+      $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck disabled! :o");
   }
+  public function onPlayerItemHeldEvent(){
+        $player = $event->getPlayer();
+        $item = $player->getInventory()->getItemInHand();
+        $playername = " . $player->getName() . ";
+        
+        #Execute Command -> $this->getServer()->dispatchCommand($player, 'help');
+        
+        switch($item->getId()){
+            case 265:
+                $player->sendMessage("You're holding a diamond!");
+                $player-> $this->getServer()->dispatchCommand($player, 'help');
+        }
+  }
+}
