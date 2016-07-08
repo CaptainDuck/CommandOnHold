@@ -5,37 +5,37 @@ namespace CommandOnHold;
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\Item;
 use pocketmine\event\Listener;
-use pocketmine\command;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\Player;
 use pocketmine\permission\Permission;
-use pocketmine\permission\Permissible;
-use pockemine\command\CommandExecutor;
-use pocketmine\Server;
-use pocketmine\player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as C;
 
 class Main extends PluginBase implements Listener{
   
   public function onEnable(){
-    $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
+      $this->getServer()->getPluginManager()->registerEvents($this, $this);
+      $this->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
+  }
+  public function onLoad(){
+      $this->getLogger()->info("Loading CommandOnHold by CaptainDuck!");
   }
   public function onDisable(){
-      $this->getServer()->getLogger()->info("CommandOnHold by CaptainDuck disabled! :o");
+      $this->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
   }
-  public function onPlayerItemHeldEvent(){
-        $player = $event->getPlayer();
-        $item = $player->getInventory()->getItemInHand();
-        $playername = " . $player->getName() . ";
-        
+  public function onPlayerItemHeldEvent(PlayerItemHeldEvent $event){
+      $player = $event->getPlayer();
+      $item = $player->getInventory()->getItemInHand();
+      
         #Execute Command -> $this->getServer()->dispatchCommand($player, 'help');
         
-        if($item->getId() == 265){
-            $player->sendMessage("You're holding a diamond!");
-            $player-> $this->getServer()->dispatchCommand($player, 'help');
+      if($item->getId() == 265){
+          $player->sendMessage("You're holding a diamond!" .$player);
+          $player->$this->getServer()->dispatchCommand($player, 'help');
         }
         if($item->getId() == 32){
-            $player->sendMessage("You're hold a deadbush! :o");
+            $player->sendMessage("You're holding a deadbush! :o");
         }
   }
 }
