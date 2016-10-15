@@ -1,2 +1,17 @@
-----
-....
+---
+#CommandOnHold Config File
+
+#Items
+
+items:
+  id: "276"
+  level/world: "world"
+  playercmd: "hub"
+  consolecmds:
+    - "tell {player} You hold a diamond sword!"
+    - "say Hmm.."
+  id: "278"
+  level/world: "nether"
+  playercmd: ""
+  consolecmds:
+    - ""
