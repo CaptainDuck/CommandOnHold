@@ -30,12 +30,7 @@ class Main extends PluginBase implements Listener{
       
         #Execute Command -> $this->getServer()->dispatchCommand($player, 'help');
         
-      if($item->getId() == 265){
-          $player->sendMessage("You're holding a diamond!" .$player);
-          $player->$this->getServer()->dispatchCommand($player, 'help');
-        }
-        if($item->getId() == 32){
-            $player->sendMessage("You're holding a deadbush! :o");
+      
         }
   }
 }
