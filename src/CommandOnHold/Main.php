@@ -1,6 +1,6 @@
 <?php
 
-namespace CommandOnHold;
+namespace CommandHold;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\item\Item;
