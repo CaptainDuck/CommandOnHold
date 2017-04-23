@@ -11,8 +11,8 @@ Is this how you do the $i++ thing??
 
 __Code:__
 ```php
+$playercmds = $th["id"]["playercmds"];
 foreach($playercmds as $i){
-    $consolecmds = $th["id"]["consolecmds"];
     $this->getServer()->dispatchCommand($player, $i);
     $i++;
 }
