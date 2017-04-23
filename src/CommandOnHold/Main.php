@@ -43,12 +43,12 @@ class Main extends PluginBase implements Listener{
                         if($event->getItem() == $id){
                             foreach($playercmds as $i){
                                 $this->getServer()->dispatchCommand($player, $i);
-                                $i++
+                                $i++;
                             }
                             if(isset($consolecmds)){
                                 foreach($consolecmds as $i){
                                     $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $i);
-                                    $i++
+                                    $i++;
                                 }
                             }
                         }
