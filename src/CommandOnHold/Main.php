@@ -8,6 +8,7 @@ use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\player\PlayerItemHeldEvent;
+use pocketmine\command\ConsoleCommandSender;
 use pocketmine\Player;
 use pocketmine\permission\Permission;
 use pocketmine\utils\Config;
@@ -46,7 +47,7 @@ class Main extends PluginBase implements Listener{
                             }
                             if(isset($consolecmds)){
                                 foreach($consolecmds as $i){
-                                    $this->getServer()->dispatchCommand($player, $i);
+                                    $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $i);
                                     $i++
                                 }
                             }
