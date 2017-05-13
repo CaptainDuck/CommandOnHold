@@ -7,13 +7,13 @@ items:
   id: 276
    level/world: "world"
    playercmds:
-     - "hub
+   - "hub
    consolecmds:
-     - "tell {player} You hold a diamond sword!"
-     - "say Hmm.."
+   - "tell {player} You hold a diamond sword!"
+   - "say Hmm.."
   id: 278
    level/world: "nether"
    playercmds:
-    - ""
+   - ""
    consolecmds:
-    - ""
+   - ""
