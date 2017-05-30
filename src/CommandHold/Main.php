@@ -18,7 +18,20 @@ class Main extends PluginBase implements Listener{
     
     public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveDefaultConfig();
+        if(!is_dir($this->getDataFolder())) mkdir($this->getDataFolder());
+		 $this->items = new Config($this->getDataFolder()."items.yml", Config::YAML, array(
+				"267" => array(
+					  "level/world" => "world",
+					  "playercmds" => array(
+							 "hub"
+                    ),
+					  "consolecmds" => array(
+						     "tell {player} You held a diamond sword!",
+					   	     "say Awesome!"
+						)	
+				)
+		));
+		$this->items->save();
         $this->getLogger()->info("CommandOnHold by CaptainDuck enabled!");
     }
     
@@ -28,27 +41,22 @@ class Main extends PluginBase implements Listener{
     
     public function onPlayerItemHeldEvent(PlayerItemHeldEvent $event){
         $player = $event->getPlayer();
-        $item = $player->getInventory()->getItemInHand();
-      
-        #Execute Command -> $this->getServer()->dispatchCommand($player, 'help');
-        $cfg = $this->getConfig()->getAll();
-        foreach($cfg["items"] as $th){
-            if(isset($th["id"]) && isset($th["id"]["level/world"]) && isset($th["id"]["playercmds"])){
-                $level = $th["id"]["level/world"];
-                $consolecmds = $th["id"]["consolecmds"];
-                $playercmds = $th["id"]["playercmds"];
-                $id = $th["id"];
-                if($player->getLevel()->getName() == $level){
-                    if(!$player->hasPermission("commandonhold.bypass")){
-                        if($event->getItem() == $id){
-                            foreach($playercmds as $i){
-                                $this->getServer()->dispatchCommand($player, $i);
-                                $i++;
+        $item = $event->getItem();
+        $th = $this->items->getAll()[$item->getId()];
+        if(!$player->hasPermission("commandonhold.bypass")){
+            if(isset($th)){
+                if(!$player->hasPermission("commandonhold.bypass")){
+                    if(isset($th["level/world"]) && isset($th["playercmds"])){
+                        $level = $th["level/world"];
+                        $consolecmds = $th["consolecmds"];
+                        $playercmds = $th["playercmds"];
+                        if($player->getLevel()->getName() == $level){
+                            foreach($playercmds as $p){
+                                $this->getServer()->dispatchCommand($player, $p);
                             }
                             if(isset($consolecmds)){
-                                foreach($consolecmds as $i){
-                                    $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $i);
-                                    $i++;
+                                foreach($consolecmds as $c){
+                                    $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $c);
                                 }
                             }
                         }
@@ -56,6 +64,5 @@ class Main extends PluginBase implements Listener{
                 }
             }
         }
-        
     }
 }
